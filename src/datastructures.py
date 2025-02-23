@@ -7,7 +7,7 @@ update this file to implement the following already declared methods:
 - get_member: Should return a member from the self._members list
 """
 from random import randint
-from Flask import flask, jsonify,
+from flask import Flask,jsonify
 
 
 class FamilyStructure:
@@ -47,22 +47,21 @@ class FamilyStructure:
         return json_text(self._members)
 
 
-    def delete_member(self, id):
-        
-        for i in range(len(self._members)):
-            if self._members[i].get("id") == id:
-                del self._members[i];
-                print("Se elimino el miembro")
-                return self._members
-        
-        return "None"
+    def delete_member(self, id):        
+        del self._members[id];
+        print(f"Se elimino el miembro: {id}")
+        return jsonify(self._members)
+
 
     def get_member(self, id):
-        # fill this method and update the return
-        print (self._members)
-        return self._members
+        json_text = self.members[id];
+        for i in range (len(self._members)):
+            if self._members[i].get("id") == id
+                return self._members[i];
+        print{f"El miembro es: {json_text}"}
+        return jsonify(json_text)
+
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
-        json_text =jsonify(self._members)
         return self._members
